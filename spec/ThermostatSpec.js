@@ -29,6 +29,40 @@ describe("Thermostat", function() {
     });
   });
 
+  describe("#resetTemp", function() {
+
+    it("resets #currentTemp to 20 degress", function() {
+      thermostat.upTemp();
+      thermostat.resetTemp();
+      expect(thermostat.currentTemp).toEqual(20);
+    });
+  });
+
+  describe("#colorDisplay", function() {
+
+    it("display color green when temperature is less than 18", function() {
+      for(i=1; i<4; i++) {
+        thermostat.downTemp();
+      }
+      thermostat.colorDisplayCheck();
+      expect(thermostat.colorDisplay).toEqual("Green");
+    });
+
+    it("display color yellow when temperature is less than 25", function() {
+      thermostat.colorDisplayCheck();
+      expect(thermostat.colorDisplay).toEqual("Yellow");
+    });
+
+    it("display color red when temperature is above 25", function() {
+      thermostat.powerSavingSwitch();
+      for(i=1; i<7; i++) {
+        thermostat.upTemp();
+      }
+      thermostat.colorDisplayCheck();
+      expect(thermostat.colorDisplay).toEqual("Red");
+    });
+  });
+
   describe("#upTemp", function() {
 
     it("increases the #currentTemp by 1", function() {
@@ -38,7 +72,7 @@ describe("Thermostat", function() {
     it("throws error if you try to go above max temp", function() {
         for (i=1; i < 6; i++) {
           thermostat.upTemp();
-        };
+        }
       expect(function() {thermostat.upTemp()}).toThrow(new Error("Cannot increase temperature, you are at max temp for mode"));
     });
   });
@@ -53,7 +87,7 @@ describe("Thermostat", function() {
     it("throws error if you try to go below 10 degrees", function() {
         for (i=1; i < 11; i++) {
           thermostat.downTemp();
-        };
+        }
       expect(function() {thermostat.downTemp()}).toThrow(new Error("Cannot decrease temperature, minimum is 10 degrees"));
     });
   });
