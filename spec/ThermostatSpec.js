@@ -14,13 +14,13 @@ describe("Thermostat", function() {
   });
 
   it("should have a #power saving mode default on", function() {
-    expect(thermostat.powerSaving).toEqual(true);
+    expect(thermostat.powerSaving).toEqual("ON");
   });
 
   describe("#powerSaving", function() {
     it("power saving can be turned off", function() {
       thermostat.powerSavingSwitch();
-      expect(thermostat.powerSaving).toEqual(false);
+      expect(thermostat.powerSaving).toEqual("OFF");
     });
 
     it("when power saving turned off, changes max temp to 32", function() {
@@ -73,7 +73,9 @@ describe("Thermostat", function() {
         for (i=1; i < 6; i++) {
           thermostat.upTemp();
         }
-      expect(function() {thermostat.upTemp()}).toThrow(new Error("Cannot increase temperature, you are at max temp for mode"));
+        spyOn(window, 'alert');
+        expect(function() {window.alert();}).toHaveBeenCalledWith('Cannot increase temperature, you are at max temp for mode');
+      //expect(function() {thermostat.upTemp()}).toThrow(new alert("Cannot increase temperature, you are at max temp for mode"));
     });
   });
 

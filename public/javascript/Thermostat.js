@@ -1,4 +1,3 @@
-console.log("testtest");
 function Thermostat() {
   var DEFAULT_TEMPERATURE = 20;
   this.MAX_TEMP_ERROR = "Cannot increase temperature, you are at max temp for mode";
@@ -6,24 +5,24 @@ function Thermostat() {
   this.MAX_TEMPERATURE = 25;
   this.MIN_TEMPERATURE = 10;
   this.currentTemp = DEFAULT_TEMPERATURE;
-  this.powerSaving = true;
+  this.powerSaving = "ON";
   this.colorDisplay = "Yellow";
 }
 
 Thermostat.prototype.upTemp = function() {
-  if (this.atMax()) throw Error(this.MAX_TEMP_ERROR);
-  this.currentTemp += 1;
+  if (this.atMax()) {alert(this.MAX_TEMP_ERROR);}
+  else {this.currentTemp += 1;}
 };
 
 Thermostat.prototype.downTemp = function() {
-  if (this.atMin()) throw Error(this.MIN_TEMP_ERROR);
-  this.currentTemp -= 1;
+  if (this.atMin()) {alert(this.MIN_TEMP_ERROR);}
+  else {this.currentTemp -= 1;}
 };
 
 Thermostat.prototype.powerSavingSwitch = function() {
-  if (this.powerSaving === true) {this.powerSaving = false;
+  if (this.powerSaving === "ON") {this.powerSaving = "OFF";
   this.MAX_TEMPERATURE = 32;}
-  else {this.powerSaving = true;
+  else {this.powerSaving = "ON";
   this.MAX_TEMPERATURE = 25;}
 };
 
@@ -33,7 +32,6 @@ Thermostat.prototype.colorDisplayCheck = function() {
   else if (this.currentTemp > 25) {this.colorDisplay = "Red";
   }
   else {this.colorDisplay = "Yellow";}
-    alert("The energy status is "+this.colorDisplay);
 };
 
 Thermostat.prototype.resetTemp = function() {
