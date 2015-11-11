@@ -9,11 +9,37 @@ describe("Thermostat", function() {
     expect(thermostat.currentTemp).toEqual(20);
   });
 
+  it("should have a #MAX_TEMPERATURE of 25 degrees", function() {
+    expect(thermostat.MAX_TEMPERATURE).toEqual(25);
+  });
+
+  it("should have a #power saving mode default on", function() {
+    expect(thermostat.powerSaving).toEqual(true);
+  });
+
+  describe("#powerSaving", function() {
+    it("power saving can be turned off", function() {
+      thermostat.powerSavingSwitch();
+      expect(thermostat.powerSaving).toEqual(false);
+    });
+
+    it("when power saving turned off, changes max temp to 32", function() {
+      thermostat.powerSavingSwitch();
+      expect(thermostat.MAX_TEMPERATURE).toEqual(32);
+    });
+  });
+
   describe("#upTemp", function() {
 
     it("increases the #currentTemp by 1", function() {
       thermostat.upTemp();
       expect(thermostat.currentTemp).toEqual(21);
+    });
+    it("throws error if you try to go above max temp", function() {
+        for (i=1; i < 6; i++) {
+          thermostat.upTemp();
+        };
+      expect(function() {thermostat.upTemp()}).toThrow(new Error("Cannot increase temperature, you are at max temp for mode"));
     });
   });
 
@@ -22,6 +48,13 @@ describe("Thermostat", function() {
     it("decreases the #currentTemp by 1", function() {
       thermostat.downTemp();
       expect(thermostat.currentTemp).toEqual(19);
+    });
+
+    it("throws error if you try to go below 10 degrees", function() {
+        for (i=1; i < 11; i++) {
+          thermostat.downTemp();
+        };
+      expect(function() {thermostat.downTemp()}).toThrow(new Error("Cannot decrease temperature, minimum is 10 degrees"));
     });
   });
 
