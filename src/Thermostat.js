@@ -1,3 +1,4 @@
+console.log("testtest");
 function Thermostat() {
   var DEFAULT_TEMPERATURE = 20;
   this.MAX_TEMP_ERROR = "Cannot increase temperature, you are at max temp for mode";
@@ -32,6 +33,7 @@ Thermostat.prototype.colorDisplayCheck = function() {
   else if (this.currentTemp > 25) {this.colorDisplay = "Red";
   }
   else {this.colorDisplay = "Yellow";}
+    alert("The energy status is "+this.colorDisplay)
 };
 
 Thermostat.prototype.resetTemp = function() {
@@ -44,4 +46,8 @@ Thermostat.prototype.atMax = function() {
 
 Thermostat.prototype.atMin = function() {
   return this.currentTemp === this.MIN_TEMPERATURE;
+};
+
+function check() {
+  alert("test test")
 };
