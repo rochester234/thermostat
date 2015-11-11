@@ -1,10 +1,10 @@
 function Thermostat() {
-  var DEFAULT_TEMPERATURE = 20;
-  this.MAX_TEMP_ERROR = "Cannot increase temperature, you are at max temp for mode";
+  this.DEFAULT_TEMPERATURE = 20;
+  this.MAX_TEMP_ERROR = "Cannot increase temperature, you are at max temp!";
   this.MIN_TEMP_ERROR = "Cannot decrease temperature, minimum is 10 degrees";
   this.MAX_TEMPERATURE = 25;
   this.MIN_TEMPERATURE = 10;
-  this.currentTemp = DEFAULT_TEMPERATURE;
+  this.currentTemp = this.DEFAULT_TEMPERATURE;
   this.powerSaving = "ON";
   this.colorDisplay = "Yellow";
 }

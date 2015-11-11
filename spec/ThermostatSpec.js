@@ -6,7 +6,7 @@ describe("Thermostat", function() {
   });
 
   it("should have a #DEFAULT_TEMPERATURE of 20 degrees", function() {
-    expect(thermostat.currentTemp).toEqual(20);
+    expect(thermostat.currentTemp).toEqual(thermostat.DEFAULT_TEMPERATURE);
   });
 
   it("should have a #MAX_TEMPERATURE of 25 degrees", function() {
@@ -69,13 +69,12 @@ describe("Thermostat", function() {
       thermostat.upTemp();
       expect(thermostat.currentTemp).toEqual(21);
     });
-    it("throws error if you try to go above max temp", function() {
-        for (i=1; i < 6; i++) {
+    it("throws an alert if you try to go above max temp", function() {
+        spyOn(window, 'alert');
+        for (i=0; i < 6; i++) {
           thermostat.upTemp();
         }
-        spyOn(window, 'alert');
-        expect(function() {window.alert();}).toHaveBeenCalledWith('Cannot increase temperature, you are at max temp for mode');
-      //expect(function() {thermostat.upTemp()}).toThrow(new alert("Cannot increase temperature, you are at max temp for mode"));
+        expect(window.alert).toHaveBeenCalledWith(thermostat.MAX_TEMP_ERROR);
     });
   });
 
@@ -86,13 +85,12 @@ describe("Thermostat", function() {
       expect(thermostat.currentTemp).toEqual(19);
     });
 
-    it("throws error if you try to go below 10 degrees", function() {
-        for (i=1; i < 11; i++) {
+    it("throws an alert if you try to go below min temp", function() {
+        spyOn(window, 'alert');
+        for (i=0; i < 11; i++) {
           thermostat.downTemp();
         }
-      expect(function() {thermostat.downTemp()}).toThrow(new Error("Cannot decrease temperature, minimum is 10 degrees"));
+        expect(window.alert).toHaveBeenCalledWith(thermostat.MIN_TEMP_ERROR);
     });
   });
-
-
 });

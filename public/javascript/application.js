@@ -29,5 +29,4 @@ $(document).on("click", "#power-switch", function() {
   console.log(thermostat.powerSaving);
 });
 
-
 });
