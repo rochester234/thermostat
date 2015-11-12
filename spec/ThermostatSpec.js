@@ -69,12 +69,11 @@ describe("Thermostat", function() {
       thermostat.upTemp();
       expect(thermostat.currentTemp).toEqual(21);
     });
-    it("throws an alert if you try to go above max temp", function() {
-        spyOn(window, 'alert');
-        for (i=0; i < 6; i++) {
+    it("throws an error if you try to go above max temp", function() {
+        for (i=1; i < 6; i++) {
           thermostat.upTemp();
         }
-        expect(window.alert).toHaveBeenCalledWith(thermostat.MAX_TEMP_ERROR);
+        expect(function() {thermostat.upTemp()}).toThrow(new Error (thermostat.MAX_TEMP_ERROR));
     });
   });
 
@@ -86,11 +85,10 @@ describe("Thermostat", function() {
     });
 
     it("throws an alert if you try to go below min temp", function() {
-        spyOn(window, 'alert');
-        for (i=0; i < 11; i++) {
+        for (i=1; i < 11; i++) {
           thermostat.downTemp();
         }
-        expect(window.alert).toHaveBeenCalledWith(thermostat.MIN_TEMP_ERROR);
+        expect(function() {thermostat.downTemp()}).toThrow(new Error (thermostat.MIN_TEMP_ERROR));
     });
   });
 });

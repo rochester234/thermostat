@@ -10,13 +10,13 @@ function Thermostat() {
 }
 
 Thermostat.prototype.upTemp = function() {
-  if (this.atMax()) {alert(this.MAX_TEMP_ERROR);}
-  else {this.currentTemp += 1;}
+  if (this.atMax()) throw Error(this.MAX_TEMP_ERROR);
+  this.currentTemp += 1;
 };
 
 Thermostat.prototype.downTemp = function() {
-  if (this.atMin()) {alert(this.MIN_TEMP_ERROR);}
-  else {this.currentTemp -= 1;}
+  if (this.atMin()) throw Error(this.MIN_TEMP_ERROR);
+  this.currentTemp -= 1;
 };
 
 Thermostat.prototype.powerSavingSwitch = function() {
