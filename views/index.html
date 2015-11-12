@@ -2,21 +2,35 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="../jquery.js"></script>
     <script src="../public/javascript/application.js"></script>
     <script src="../public/javascript/Thermostat.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
     <title>Thermostat</title>
   </head>
 
   <body>
-  <section>
-    <p>Current Temperature: <span id="current-temp"></span></p>
-    <p>Power Saving Mode: <span id="psm"></span></p>
-    <button id="up-temp">+</button>
-    <button id="down-temp">-</button>
-    <button id="reset-temp">Reset</button>
-    <button id="power-switch">Power Switch</button>
-  </section>
+      <div id="thermostat"
+        <section>
+          <div id="title">
+            <p>Current Temperature: <span id="current-temp"></span></p>
+          </div>
+
+          <div id="power">
+            <p>Power Saving Mode: <span id="psm"></span></p>
+          </div>
+            <div id="test">
+              <p>
+                <button class ="top-buttons" id="up-temp">+</button>
+                <button class ="top-buttons" id="down-temp">-</button>
+              </p>
+
+            <p>
+              <button class="bottom-buttons" id="reset-temp">Reset</button>
+              <button class="bottom-buttons" id="power-switch">Power Switch</button>
+            </p>
+          </div>
+        </section>
+    </div>
   </body>
 </html>

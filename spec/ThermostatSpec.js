@@ -45,12 +45,12 @@ describe("Thermostat", function() {
         thermostat.downTemp();
       }
       thermostat.colorDisplayCheck();
-      expect(thermostat.colorDisplay).toEqual("Green");
+      expect(thermostat.colorDisplay).toEqual("green");
     });
 
     it("display color yellow when temperature is less than 25", function() {
       thermostat.colorDisplayCheck();
-      expect(thermostat.colorDisplay).toEqual("Yellow");
+      expect(thermostat.colorDisplay).toEqual("yellow");
     });
 
     it("display color red when temperature is above 25", function() {
@@ -59,7 +59,7 @@ describe("Thermostat", function() {
         thermostat.upTemp();
       }
       thermostat.colorDisplayCheck();
-      expect(thermostat.colorDisplay).toEqual("Red");
+      expect(thermostat.colorDisplay).toEqual("red");
     });
   });
 

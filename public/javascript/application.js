@@ -2,27 +2,37 @@ $( document ).ready(function() {
 
 thermostat = new Thermostat();
 
-$("#current-temp").prepend(thermostat.currentTemp);
-$("#psm").prepend(thermostat.powerSaving);
+  $("#current-temp").prepend(thermostat.currentTemp);
+  $("#psm").prepend(thermostat.powerSaving);
 
-$(document).on("click", "#up-temp", function() {
-  thermostat.upTemp();
-  $("#current-temp").replaceWith("<span id='current-temp'>" + thermostat.currentTemp + "</span>");
-});
+  $('#up-temp').on('click', function() {
+    thermostat.upTemp();
+    $("#title").fadeOut(300);
+    thermostat.colorDisplayCheck();
+    $("#current-temp").replaceWith("<span id='current-temp'>" + thermostat.currentTemp + "</span>");
+    $('#title').css('background-color', thermostat.colorDisplay);
+    $("#title").fadeIn(300);
+  });
 
-$(document).on("click", "#down-temp", function() {
-  thermostat.downTemp();
-  $("#current-temp").replaceWith("<span id='current-temp'>" + thermostat.currentTemp + "</span>");
-});
+  $('#down-temp').on('click', function() {
+    thermostat.downTemp();
+    $("#title").fadeOut(300);
+    thermostat.colorDisplayCheck();
+    $("#current-temp").replaceWith("<span id='current-temp'>" + thermostat.currentTemp + "</span>");
+      $('#title').css('background-color', thermostat.colorDisplay);
+    $("#title").fadeIn(300);
+  });
 
-$(document).on("click", "#reset-temp", function() {
-  thermostat.resetTemp();
-  $("#current-temp").replaceWith("<span id='current-temp'>" + thermostat.currentTemp + "</span>");
-});
+  $('#reset-temp').on('click', function() {
+    thermostat.resetTemp();
+      thermostat.colorDisplayCheck();
+    $("#current-temp").replaceWith("<span id='current-temp'>" + thermostat.currentTemp + "</span>");
+      $('#title').css('background-color', thermostat.colorDisplay);
+  });
 
-$(document).on("click", "#power-switch", function() {
-  thermostat.powerSavingSwitch();
-  $("#psm").replaceWith("<span id='psm'>" + thermostat.powerSaving + "</span>");
-});
+  $('#power-switch').on('click', function(){
+    thermostat.powerSavingSwitch();
+    $("#psm").replaceWith("<span id='psm'>" + thermostat.powerSaving + "</span>");
+  });
 
 });

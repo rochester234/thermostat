@@ -1,0 +1,51 @@
+@font-face { font-family: Digital-style; src: url('digital-7.ttf'); }
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-image: url("apple-mac.jpg");
+}
+
+#thermostat {
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  padding: 10px;
+  overflow: auto;
+
+}
+#title {
+  margin-left: 50px;
+  margin-top: 180px;
+  /*margin-right: auto;*/
+  font-family: Digital-style, Courier;
+  font-size: 60px;
+  text-align: center;
+  background-color: yellow;
+  width: 400px;
+}
+
+#power {
+  font-weight: bold;
+  color: white;
+  margin-left: 60px;
+  width: 350px;
+  font-size: 24px;
+  text-align: center;
+}
+#test {
+  text-align: left;
+  margin-left: 120px;
+}
+.top-buttons {
+  font-weight: bold;
+  font-size: 14px;
+  width: 120px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.bottom-buttons {
+  font-weight: bold;
+  font-size: 14px;
+  width: 120px;
+  font-family: "Courier New", Courier, monospace;
+}
